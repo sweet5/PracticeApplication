@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+    <shortcut
+        android:icon="@drawable/lazhu"
+        android:shortcutId="startMusic"
+        android:shortcutLongLabel="@string/shortcut_setting_long"
+        android:shortcutShortLabel="@string/shortcut_setting_short">
+
+        <intent
+            android:action="com.tangln.practiceapplication.MAIN"
+            android:targetClass="com.tangln.practiceapplication.MainActivity"
+            android:targetPackage="com.tangln.practiceapplication" />
+
+        <intent
+            android:action="com.tangln.practiceapplication.SETTING"
+            android:targetClass="com.tangln.practiceapplication.seekbar.MusicPlaySeekbarActivity"
+            android:targetPackage="com.tangln.practiceapplication" />
+
+    </shortcut>
+</shortcuts>

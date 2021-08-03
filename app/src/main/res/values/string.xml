@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="shortcut_setting_long">Long</string>
+    <string name="shortcut_setting_short">Short</string>
+</resources>

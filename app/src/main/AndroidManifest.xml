@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.tangln.practiceapplication">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.PracticeApplication">
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.app.shortcuts"
+                android:resource="@xml/shortcuts" />
+        </activity>
+
+        <activity android:name=".p1.P1ViewActivity"></activity>
+
+        <activity android:name=".p1.PracticeWorkViewActivity"></activity>
+
+        <activity android:name=".p2.P2ViewActivity"></activity>
+
+        <activity android:name=".p4.P4PracticeActivity"></activity>
+
+        <activity android:name=".p4.P4PracticeWorkViewActivity"></activity>
+
+        <activity android:name=".p5.P5PracticeActiivty"></activity>
+
+        <activity android:name=".p6.P6PracticeViewActivity"></activity>
+
+        <activity android:name=".p7.P7PracticeActivity"></activity>
+
+        <activity android:name=".p7.P7PracticeWorkActivity"></activity>
+
+        <activity android:name=".seekbar.MusicPlaySeekbarActivity">
+        </activity>
+    </application>
+
+</manifest>
