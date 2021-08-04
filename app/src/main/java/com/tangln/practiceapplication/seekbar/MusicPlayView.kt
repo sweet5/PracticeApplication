@@ -21,28 +21,17 @@ class MusicPlayView: View {
 
     private var mLinePaint=Paint() //竖线的paint
     private var test=ArrayList<Float>()
-    private var mContext:Context
 
-    constructor(context: Context) : super(context){
-        mContext=context
-        initView()
-    }
-    constructor(context: Context, attrs: AttributeSet?) : super(context, attrs){
-        mContext=context
-        initView()
-    }
-    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr){
-        mContext=context
-        initView()
-    }
-
-    private fun initView(){
+    init {
         mLinePaint.style=Paint.Style.STROKE
         mLinePaint.color=Color.RED
         mLinePaint.strokeWidth=2f
-
         setRandomNum()
     }
+
+    constructor(context: Context) : this(context,null)
+    constructor(context: Context, attrs: AttributeSet?) :  this(context,attrs,0)
+    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr)
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
@@ -52,12 +41,12 @@ class MusicPlayView: View {
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
         //todo 此处正常逻辑是，每个点的间隔为4dp，-200为前面的时间显示器的宽度
-        var widthSpec = MeasureSpec.makeMeasureSpec((test.size / 4) * 4+getScreenWidth(mContext)-200, MeasureSpec.UNSPECIFIED)
+        var widthSpec = MeasureSpec.makeMeasureSpec((test.size / 4) * 4+getScreenWidth(context)-200, MeasureSpec.UNSPECIFIED)
         setMeasuredDimension(widthSpec, 100)
     }
 
     fun getMusicPlayViewWidth():Float{
-        return (test.size / 4) * 4+getScreenWidth(mContext)-200.toFloat()
+        return (test.size / 4) * 4+getScreenWidth(context)-200.toFloat()
     }
 
     /**

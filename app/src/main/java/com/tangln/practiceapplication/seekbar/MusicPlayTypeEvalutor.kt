@@ -19,7 +19,6 @@ class MusicPlayTypeEvalutor:TypeEvaluator<Int> {
         this.mScrollViewListener=mScrollViewListener
     }
 
-    //fraction是动画完成度
     override fun evaluate(fraction: Float, startValue: Int, endValue: Int): Int {
         //（结束值-初始值）*动画完成度=当前的动画值
         var currentFractionValue=startValue+(endValue-startValue)*fraction

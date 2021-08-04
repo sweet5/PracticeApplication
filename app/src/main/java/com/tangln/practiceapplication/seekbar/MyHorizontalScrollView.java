@@ -21,6 +21,8 @@ import android.widget.ScrollView;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author: tangln
@@ -54,8 +56,10 @@ public class MyHorizontalScrollView extends HorizontalScrollView implements Scro
         isfinishScroll();
     }
 
+    /**
+     * sc的滚动是否结束（手势滚动）
+     */
     public boolean isfinishScroll() {
-
         boolean isfinish=false;
         Class scrollview=HorizontalScrollView.class;
         try {
@@ -75,11 +79,8 @@ public class MyHorizontalScrollView extends HorizontalScrollView implements Scro
         } catch (InvocationTargetException e) {
             e.printStackTrace();
         }
-
         return isfinish;
-
     }
-
 
     @Override
     public boolean onTouchEvent(MotionEvent ev) {
@@ -101,23 +102,18 @@ public class MyHorizontalScrollView extends HorizontalScrollView implements Scro
         //todo setDuration=总时间长度-已经播放的时间长度
         mObjectAnimator.setDuration(13400);
 
-        mObjectAnimator.addListener(new AnimatorListenerAdapter() {
+        mObjectAnimator.addPauseListener(new Animator.AnimatorPauseListener() {
             @Override
-            public void onAnimationPause(Animator animation) {
-                super.onAnimationPause(animation);
-                Log.i("tang","暂停了");
+            public void onAnimationPause(Animator animator) {
+                Log.i("tang","暂停了="+animator.getDuration() % 3600 % 60);
             }
 
             @Override
-            public void onAnimationResume(Animator animation) {
-                super.onAnimationResume(animation);
-                Log.i("tang","重新开始了");
+            public void onAnimationResume(Animator animator) {
+                Log.i("tang","重新开始了="+animator.getDuration() % 3600 % 60);
             }
         });
-
         mObjectAnimator.start();
-
-
     }
 
     public void stopPlayMusicAnimator(){
@@ -128,8 +124,17 @@ public class MyHorizontalScrollView extends HorizontalScrollView implements Scro
      * 获取此时的播放移动值
      * @param currentPlayValue
      */
+    private Map<String,Integer> mycurrentValue=new HashMap<String,Integer>();
+    private int lastCurrentValue;
+    private int moveValue;
     @Override
     public void getScrollViewListener(int currentPlayValue) {
+        if (null!=mycurrentValue.get("lastCurrentVale")&&mycurrentValue.get("lastCurrentVale")!=currentPlayValue){
+            moveValue=currentPlayValue-mycurrentValue.get("lastCurrentVale");
+            mycurrentValue.put("lastCurrentVale",currentPlayValue);
+        }
+        //sc移动
+        this.fling(moveValue);
         msetPlayTimeListener.getPlayTime(-currentPlayValue);
     }
 

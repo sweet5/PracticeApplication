@@ -5,6 +5,6 @@ package com.tangln.practiceapplication.seekbar
  * @date: 2021/8/2  下午6:10
  * des:
  */
-public interface ScrollViewListener {
+interface ScrollViewListener {
     fun getScrollViewListener(currentPlayValue:Int)
 }

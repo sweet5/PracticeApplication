@@ -94,5 +94,4 @@ class MusicPlaySeekbarActivity:AppCompatActivity(),MyHorizontalScrollView.setPla
         }
     }
 
-
 }
